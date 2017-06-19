@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="460.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.sample.FeedbackController">
+    <children>
+        <fx:include source="./menu.fxml" />
+        <Label fx:id="startDate" layoutX="14.0" layoutY="80.0" text="Date de début : " />
+        <Label fx:id="unit" layoutX="13.0" layoutY="123.0" text="unit :" />
+        <Label fx:id="nbPersonnesControlees" layoutX="14.0" layoutY="167.0" text="nombre de personnes contrôlées :" />
+        <Label fx:id="nbInfractions" layoutX="13.0" layoutY="208.0" text="nombre d’infractions relevées :" />
+        <Label fx:id="nbOfWeaponInfractions" layoutX="14.0" layoutY="251.0" text="infractions relatives aux ARMES :" />
+        <Label fx:id="nbOfRoadInfractions" layoutX="14.0" layoutY="291.0" text="infractions au code de la route :" />
+        <Label fx:id="nbOfPenalInfractions" layoutX="14.0" layoutY="337.0" text="infractions pénales :" />
+        <Label fx:id="nbOfOffences" layoutX="14.0" layoutY="383.0" text="Délits :" />
+        <Label fx:id="nbOfFinesFifthClass" layoutX="530.0" layoutY="80.0" text="Contraventions de 5ème classe :" />
+        <Label fx:id="nbOfFinesOtherClass" layoutX="531.0" layoutY="123.0" text="Contraventions des 4 autres classes :" />
+        <Label fx:id="nbOfVehiculsControled" layoutX="532.0" layoutY="167.0" text="nombre de véhicules contrôlés :" />
+        <Label fx:id="nbOfImmobilisations" layoutX="531.0" layoutY="208.0" text="nombre d’immobilisations :" />
+        <Label fx:id="nbOfReports" layoutX="531.0" layoutY="251.0" text="nombre de Procès-Verbaux :" />
+        <Label fx:id="nbOfPersonsListen" layoutX="531.0" layoutY="291.0" text="nombre de personnes entendues :" />
+        <Label fx:id="nbOfCustody" layoutX="530.0" layoutY="337.0" text="nombre de gardes à vue :" />
+
+        <Button fx:id="dismissButton" layoutX="423.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleDismissButton" text="Retour">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Button>
+      <TextField id="startDate" layoutX="307.0" layoutY="75.0" prefHeight="0.0" prefWidth="187.0" />
+      <TextField id="unit" layoutX="307.0" layoutY="118.0" />
+      <TextField id="nbPersonnesControlees" layoutX="307.0" layoutY="162.0" />
+      <TextField id="nbInfractions" layoutX="307.0" layoutY="203.0" />
+      <TextField id="nbOfWeaponInfractions" layoutX="307.0" layoutY="246.0" />
+      <TextField id="nbOfRoadInfractions" layoutX="307.0" layoutY="286.0" />
+      <TextField id="nbOfPenalInfractions" layoutX="307.0" layoutY="332.0" />
+      <TextField id="nbOfOffences" layoutX="307.0" layoutY="378.0" />
+      <TextField id="nbOfFinesFifthClass" layoutX="807.0" layoutY="75.0" />
+      <TextField id="nbOfFinesOtherClass" layoutX="807.0" layoutY="118.0" />
+      <TextField id="nbOfVehiculsControled" layoutX="807.0" layoutY="162.0" />
+      <TextField id="nbOfImmobilisations" layoutX="807.0" layoutY="203.0" />
+      <TextField id="nbOfReports" layoutX="807.0" layoutY="246.0" />
+      <TextField id="nbOfPersonsListen" layoutX="807.0" layoutY="286.0" />
+      <TextField id="nbOfCustody" layoutX="807.0" layoutY="332.0" />
+    </children>
+</AnchorPane>
