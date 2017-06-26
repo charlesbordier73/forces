@@ -13,8 +13,8 @@ import java.io.IOException;
 public class Controller {
 
     private static final String APP_NAME = "Réquisitions";
-    private static final int APP_WIDTH = 800;
-    private static final int APP_HEIGHT = 650;
+    private static final int APP_WIDTH = 1041;
+    private static final int APP_HEIGHT = 500;
 
     private static Controller instance;
 

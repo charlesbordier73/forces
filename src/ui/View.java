@@ -6,8 +6,8 @@ package ui;
 public enum View {
 
     MAIN("mainView"),
-    REQUISITIONS("requisition"),
-    FEEDBACKS("feedback");
+    REQUISITIONS("requisitionView"),
+    FEEDBACKS("feedbackView");
 
     private final String text;
 

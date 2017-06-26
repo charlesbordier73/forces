@@ -45,5 +45,14 @@ public class FeedbackController implements Initializable {
             DialogHelper.dialogPop("There is an issue", e.getMessage(), "Ok");
         }
     }
+    @FXML
+    public void handleDismissButton(ActionEvent clickConnectionButton) {
+        Controller.getInstance().goTo(View.MAIN);
+    }
+
+    public void handleValidationButton(ActionEvent clickConnectionButton) {
+
+
+    }
 
 }
