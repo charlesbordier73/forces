@@ -7,7 +7,8 @@ public enum View {
 
     MAIN("mainView"),
     REQUISITIONS("requisitionView"),
-    FEEDBACKS("feedbackView");
+    FEEDBACKS("feedbackView"),
+    UNITS("unitView");
 
     private final String text;
 

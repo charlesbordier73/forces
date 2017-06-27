@@ -21,6 +21,11 @@
                         <MenuItem mnemonicParsing="false" onAction="#handleGoToFeedbacks" text="Retours de mission" />
                     </items>
                 </Menu>
+                <Menu mnemonicParsing="false" onAction="#handleGoToUnits" text="Unité">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleGoToUnits" text="Ajouter une unité" />
+                    </items>
+                </Menu>
             </menus>
         </MenuBar>
     </top>

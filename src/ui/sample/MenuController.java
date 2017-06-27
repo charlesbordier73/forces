@@ -18,4 +18,8 @@ public class MenuController {
         Controller.getInstance().goTo(View.FEEDBACKS);
     }
 
+    public void handleGoToUnits(ActionEvent clickMenu) throws Exception {
+        Controller.getInstance().goTo(View.UNITS);
+    }
+
 }
