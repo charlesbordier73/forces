@@ -1,6 +1,12 @@
 package ui.sample;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+
 import bl.model.Infraction;
 import bl.model.Requisition;
 import bl.model.Unit;
@@ -19,10 +25,7 @@ import ui.View;
 
 import java.net.URL;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Observable;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class RequisitionController implements Initializable {
 
@@ -70,7 +73,7 @@ public class RequisitionController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.units = UnitFacade.getInstance().getAllUnit();
-        for(int i = 0; i<this.units.size();i++){
+        for (int i = 0; i < this.units.size(); i++) {
             unitChoice.getItems().add(this.units.get(i).getName());
         }
 
@@ -78,47 +81,57 @@ public class RequisitionController implements Initializable {
 
     @FXML
     public void handleValidationButton(ActionEvent clickConnectionButton) {
-        if(infractionWeapon.isSelected()){
+        if (infractionWeapon.isSelected()) {
             try {
                 infractions.add(armes);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        if(infractionDrugs.isSelected()){
+        if (infractionDrugs.isSelected()) {
             try {
                 infractions.add(drogues);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        if(infractionThefts.isSelected()){
+        if (infractionThefts.isSelected()) {
             try {
                 infractions.add(vols);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        if(infractionTerrorism.isSelected()){
+        if (infractionTerrorism.isSelected()) {
             try {
                 infractions.add(terrorisme);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        if(unitChoice.getValue() != null) {
+        if (unitChoice.getValue() != null) {
             String unitName = unitChoice.getValue().toString();
             unite = UnitFacade.getInstance().search(unitName).get(0);
         }
 
+
         String motivation = motivationText.getText();
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss");
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+
         LocalDateTime startDate = startingDate.getDateTimeValue();
-        String dateDebut = startDate.format(formatter);
+
+        Instant instantDeb = startDate.atZone(ZoneId.systemDefault()).toInstant();
+        Date dateDebut = Date.from(instantDeb);
+        df.format(dateDebut);
+
 
         LocalDateTime endDate = endingDate.getDateTimeValue();
-        String dateFin = startDate.format(formatter);
+
+        Instant instantFin = endDate.atZone((ZoneId.systemDefault())).toInstant();
+        Date dateFin = Date.from(instantFin);
+        df.format(dateFin);
+
     }
 
     @FXML
