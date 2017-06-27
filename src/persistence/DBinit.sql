@@ -84,3 +84,8 @@ CREATE TABLE ConcernedInfractions(
     FOREIGN KEY (infractionID) REFERENCES Infraction(id),
     FOREIGN KEY (requisitionsID) REFERENCES Requisition(id)
 );
+
+Insert into Infraction(label) values ('Armes');
+Insert into Infraction (label) values ('Vols');
+Insert into Infraction (label) values ('Drogues');
+Insert into Infraction (label) values ('Terrorisme');

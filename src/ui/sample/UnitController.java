@@ -1,41 +1,57 @@
 package ui.sample;
 
 
-import bl.model.Feedback;
+import bl.model.Unit;
+import facade.UnitFacade;
+import javafx.scene.control.Alert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-
-import bl.model.Feedback;
-import facade.FeedbackFacade;
-import helpers.DialogHelper;
-import helpers.PropertiesHelper;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import outlook.CheckingMails;
+import javafx.scene.control.TextField;
 import ui.Controller;
 import ui.View;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.awt.*;
+
 
 public class UnitController {
 
+    @FXML
+    private Label toto;
 
     @FXML
+    private TextField unitName;
+
+    @FXML
+    private TextField unitSigle;
+
+    @FXML
+    private TextField unitMail;
+
+    @FXML
+
     public void handleDismissButton(ActionEvent clickConnectionButton) {
         Controller.getInstance().goTo(View.MAIN);
     }
 
     public void handleValidationButton(ActionEvent clickConnectionButton) {
+        String name = unitName.getText();
+        String sigle = unitSigle.getText();
+        String mail = unitMail.getText();
 
+        Unit unit = new Unit(name, sigle, mail);
+        try {
+            UnitFacade.getInstance().create(unit);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Succès");
+        alert.setHeaderText(null);
+        alert.setContentText("L'unité a correctement été créée !");
+
+        alert.showAndWait();
+        Controller.getInstance().goTo(View.MAIN);
     }
-
 }

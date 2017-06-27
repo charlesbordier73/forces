@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
  */
 @SuppressWarnings("unused")
 public class DateTimePicker extends DatePicker {
-    public static final String DefaultFormat = "yyyy-MM-dd HH:mm";
+    public static final String DefaultFormat = "dd-MM-yyyy hh:mm";
 
     private DateTimeFormatter formatter;
     private ObjectProperty<LocalDateTime> dateTimeValue = new SimpleObjectProperty<>(LocalDateTime.now());
