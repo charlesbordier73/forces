@@ -10,38 +10,32 @@
 <AnchorPane minWidth="1041.0" prefHeight="460.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.sample.FeedbackController">
     <children>
         <fx:include source="./menu.fxml" />
-        <Label fx:id="startDate" layoutX="14.0" layoutY="83.0" text="Date de début : " />
-        <Label fx:id="unit" layoutX="14.0" layoutY="126.0" text="unit :" />
-        <Label fx:id="nbPersonnesControlees" layoutX="14.0" layoutY="170.0" text="nombre de personnes contrôlées :" />
-        <Label fx:id="nbInfractions" layoutX="14.0" layoutY="211.0" text="nombre d’infractions relevées :" />
-        <Label fx:id="nbOfWeaponInfractions" layoutX="14.0" layoutY="254.0" text="infractions relatives aux ARMES :" />
-        <Label fx:id="nbOfRoadInfractions" layoutX="14.0" layoutY="294.0" text="infractions au code de la route :" />
-        <Label fx:id="nbOfPenalInfractions" layoutX="14.0" layoutY="340.0" text="infractions pénales :" />
-        <Label fx:id="nbOfOffences" layoutX="14.0" layoutY="386.0" text="Délits :" />
-        <Label fx:id="nbOfFinesFifthClass" layoutX="530.0" layoutY="83.0" text="Contraventions de 5ème classe :" />
-        <Label fx:id="nbOfFinesOtherClass" layoutX="530.0" layoutY="126.0" text="Contraventions des 4 autres classes :" />
-        <Label fx:id="nbOfVehiculsControled" layoutX="530.0" layoutY="170.0" text="nombre de véhicules contrôlés :" />
-        <Label fx:id="nbOfImmobilisations" layoutX="530.0" layoutY="211.0" text="nombre d’immobilisations :" />
-        <Label fx:id="nbOfReports" layoutX="530.0" layoutY="254.0" text="nombre de Procès-Verbaux :" />
-        <Label fx:id="nbOfPersonsListen" layoutX="530.0" layoutY="294.0" text="nombre de personnes entendues :" />
-        <Label fx:id="nbOfCustody" layoutX="530.0" layoutY="340.0" text="nombre de gardes à vue :" />
-
-
-        <TextField fx:id="startDateField" layoutX="307.0" layoutY="78.0" prefHeight="0.0" prefWidth="187.0" />
-        <TextField fx:id="unitField" layoutX="307.0" layoutY="121.0" />
-        <TextField fx:id="nbPersonnesControleesField" layoutX="307.0" layoutY="165.0" />
-        <TextField fx:id="nbInfractionsField" layoutX="307.0" layoutY="206.0" />
-        <TextField fx:id="nbOfWeaponInfractionsField" layoutX="307.0" layoutY="249.0" />
-        <TextField fx:id="nbOfRoadInfractionsField" layoutX="307.0" layoutY="289.0" />
-        <TextField fx:id="nbOfPenalInfractionsField" layoutX="307.0" layoutY="335.0" />
-        <TextField fx:id="nbOfOffencesField" layoutX="307.0" layoutY="381.0" />
-        <TextField fx:id="nbOfFinesFifthClassField" layoutX="807.0" layoutY="78.0" />
-        <TextField fx:id="nbOfFinesOtherClassField" layoutX="807.0" layoutY="121.0" />
-        <TextField fx:id="nbOfVehiculsControledField" layoutX="807.0" layoutY="165.0" />
-        <TextField fx:id="nbOfImmobilisationsField" layoutX="807.0" layoutY="206.0" />
-        <TextField fx:id="nbOfReportsField" layoutX="807.0" layoutY="249.0" />
-        <TextField fx:id="nbOfPersonsListenField" layoutX="807.0" layoutY="289.0" />
-        <TextField fx:id="nbOfCustodyField" layoutX="807.0" layoutY="335.0" />
+        <Label fx:id="nbPersonnesControleesLabel" layoutX="14.0" layoutY="85.0" text="Nombre de personnes contrôlées :" />
+        <Label fx:id="nbInfractionsLabel" layoutX="14.0" layoutY="126.0" text="Nombre d’infractions relevées :" />
+        <Label fx:id="nbOfWeaponInfractionsLabel" layoutX="14.0" layoutY="169.0" text="Infractions relatives aux ARMES :" />
+        <Label fx:id="nbOfRoadInfractionsLabel" layoutX="14.0" layoutY="209.0" text="Infractions au code de la route :" />
+        <Label fx:id="nbOfPenalInfractionsLabel" layoutX="14.0" layoutY="255.0" text="Infractions pénales :" />
+        <Label fx:id="nbOfOffencesLabel" layoutX="14.0" layoutY="301.0" text="Délits :" />
+        <Label fx:id="nbOfFinesFifthClassLabel" layoutX="14.0" layoutY="340.0" text="Contraventions de 5ème classe :" />
+        <Label fx:id="nbOfFinesOtherClassLabel" layoutX="530.0" layoutY="82.0" text="Contraventions des 4 autres classes :" />
+        <Label fx:id="nbOfVehiculsControledLabel" layoutX="530.0" layoutY="126.0" text="Nombre de véhicules contrôlés :" />
+        <Label fx:id="nbOfImmobilisationsLabel" layoutX="530.0" layoutY="167.0" text="Nombre d’immobilisations :" />
+        <Label fx:id="nbOfReportsLabel" layoutX="530.0" layoutY="210.0" text="Nombre de Procès-Verbaux :" />
+        <Label fx:id="nbOfPersonsListenLabel" layoutX="530.0" layoutY="250.0" text="Nombre de personnes entendues :" />
+        <Label fx:id="nbOfCustodyLabel" layoutX="530.0" layoutY="296.0" text="Nombre de gardes à vue :" />
+        <TextField fx:id="nbPersonnesControleesField" layoutX="307.0" layoutY="80.0" />
+        <TextField fx:id="nbInfractionsField" layoutX="307.0" layoutY="121.0" />
+        <TextField fx:id="nbOfWeaponInfractionsField" layoutX="307.0" layoutY="164.0" />
+        <TextField fx:id="nbOfRoadInfractionsField" layoutX="307.0" layoutY="204.0" />
+        <TextField fx:id="nbOfPenalInfractionsField" layoutX="307.0" layoutY="250.0" />
+        <TextField fx:id="nbOfOffencesField" layoutX="307.0" layoutY="296.0" />
+        <TextField fx:id="nbOfFinesFifthClassField" layoutX="307.0" layoutY="335.0" />
+        <TextField fx:id="nbOfFinesOtherClassField" layoutX="807.0" layoutY="77.0" />
+        <TextField fx:id="nbOfVehiculsControledField" layoutX="807.0" layoutY="121.0" />
+        <TextField fx:id="nbOfImmobilisationsField" layoutX="807.0" layoutY="162.0" />
+        <TextField fx:id="nbOfReportsField" layoutX="807.0" layoutY="205.0" />
+        <TextField fx:id="nbOfPersonsListenField" layoutX="807.0" layoutY="245.0" />
+        <TextField fx:id="nbOfCustodyField" layoutX="807.0" layoutY="291.0" />
 
         <Label fx:id="idReq" layoutX="363.0" layoutY="41.0" text="Retour de la réquisition n° :" />
         <ChoiceBox fx:id="idReqChoiceBox" layoutX="560.0" layoutY="36.0" prefHeight="31.0" prefWidth="63.0" />

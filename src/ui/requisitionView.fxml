@@ -23,7 +23,7 @@
         <Label layoutX="235.0" layoutY="95.0" text="Début de la réquisition :" />
         <DateTimePicker fx:id="startingDate" layoutX="235.0" layoutY="124.0" />
         <Label layoutX="235.0" layoutY="173.0" text="Fin de la réquisition :" />
-        <DateTimePicker fx:id="endingingDate" layoutX="235.0" layoutY="207.0" />
+        <DateTimePicker fx:id="endingDate" layoutX="235.0" layoutY="207.0" />
         <Label layoutX="527.0" layoutY="95.0" text="Motivation :" />
         <TextArea fx:id="motivationText" layoutX="527.0" layoutY="123.0" prefHeight="242.0" prefWidth="448.0" />
 

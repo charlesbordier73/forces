@@ -31,9 +31,15 @@ public class RequisitionDAOPG extends RequisitionDAO {
             rs.next();
             requisition.setId(rs.getInt("id"));
             connection.close();
-            createAssistingUnit(requisition.getId(), requisition.getAssistingUnit());
-            createConcernedArticle(requisition.getId(), requisition.getArticles());
-            createSearchedInfraction(requisition.getId(), requisition.getInfractions());
+            if(requisition.getAssistingUnit() != null){
+                createAssistingUnit(requisition.getId(), requisition.getAssistingUnit());
+            }
+            if(requisition.getArticles() != null){
+                createConcernedArticle(requisition.getId(), requisition.getArticles());
+            }
+            if(requisition.getInfractions() != null){
+                createSearchedInfraction(requisition.getId(), requisition.getInfractions());
+            }
             return requisition;
         } catch (SQLException e) {
             e.printStackTrace();

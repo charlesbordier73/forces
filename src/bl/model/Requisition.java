@@ -1,19 +1,32 @@
 package bl.model;
 
+import java.io.Serializable;
 import java.util.*;
+import com.google.gson.annotations.SerializedName;
 
 
-public class Requisition {
+public class Requisition implements Serializable {
 
+    @SerializedName("id")
     private int id;
+
+    @SerializedName("startDate")
     private Date startDate;
+    @SerializedName("endDate")
     private Date endDate;
+    @SerializedName("perimeter")
     private String map;
+    @SerializedName("motivation")
     private String motivation;
+    @SerializedName("requestingUnit")
     private Unit requestingUnit;
+    @SerializedName("assistingUnits")
     private ArrayList<Unit> assistingUnit;
+    @SerializedName("targets")
     private ArrayList<Infraction> infractions;
+    @SerializedName("articles")
     private ArrayList<Article> articles;
+    @SerializedName("approuved")
     private boolean approuved;
 
     public Requisition() {
