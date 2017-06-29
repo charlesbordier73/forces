@@ -1,7 +1,6 @@
 package ui.sample;
 
-
-import bl.dao.FeedbackDAO;
+import outlook.Sender;
 import bl.model.Feedback;
 import bl.model.Requisition;
 import facade.RequisitionFacade;
@@ -9,24 +8,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-import bl.model.Feedback;
 import facade.FeedbackFacade;
 import helpers.DialogHelper;
-import helpers.PropertiesHelper;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import org.json.simple.JSONObject;
-import outlook.CheckingMails;
 import ui.Controller;
 import ui.View;
 
 import java.net.URL;
-import java.time.Instant;
-import java.time.ZoneId;
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -154,25 +144,31 @@ public class FeedbackController implements Initializable {
 
             JSONObject jsonFeed = new JSONObject();
             try{
-                jsonFeed.put("requisitionID", feedback.getRequisition().getId());
-                jsonFeed.put("nbOfPersonControlled", feedback.getNbOfPersonControlled());
-                jsonFeed.put("nbOfInfractions", feedback.getNbOfInfractions());
-                jsonFeed.put("nbOfWeaponInfractions", feedback.getNbOfWeaponInfractions());
-                jsonFeed.put("nbOfRoadInfractions", feedback.getNbOfRoadInfractions());
-                jsonFeed.put("nbOfPenalInfractions", feedback.getNbOfPenalInfractions());
-                jsonFeed.put("nbOfOffences", feedback.getNbOfOffences());
-                jsonFeed.put("nbOfFinesFifthClass", feedback.getNbOfFinesFifthClass());
-                jsonFeed.put("nbOfFinesOtherClass", feedback.getNbOfFinesOtherClass());
-                jsonFeed.put("nbOfVehiculesControlled", feedback.getNbOfVehiculesControlled());
-                jsonFeed.put("nbOfImmobilisations", feedback.getNbOfImmobilisations());
-                jsonFeed.put("nbOfReports", feedback.getNbOfReports());
-                jsonFeed.put("nbOfPersonsListened", feedback.getNbOfPersonsListened());
-                jsonFeed.put("nbOfCustody", feedback.getNbOfCustody());
+                jsonFeed.put("requisitionID",String.valueOf(feedback.getRequisition().getId()));
+                jsonFeed.put("nbOfPersonControlled", String.valueOf(feedback.getNbOfPersonControlled()));
+                jsonFeed.put("nbOfInfractions", String.valueOf(feedback.getNbOfInfractions()));
+                jsonFeed.put("nbOfWeaponInfractions", String.valueOf(feedback.getNbOfWeaponInfractions()));
+                jsonFeed.put("nbOfRoadInfractions", String.valueOf(feedback.getNbOfRoadInfractions()));
+                jsonFeed.put("nbOfPenalInfractions", String.valueOf(feedback.getNbOfPenalInfractions()));
+                jsonFeed.put("nbOfOffences", String.valueOf(feedback.getNbOfOffences()));
+                jsonFeed.put("nbOfFinesFifthClass", String.valueOf(feedback.getNbOfFinesFifthClass()));
+                jsonFeed.put("nbOfFinesOtherClass", String.valueOf(feedback.getNbOfFinesOtherClass()));
+                jsonFeed.put("nbOfVehiculesControlled", String.valueOf(feedback.getNbOfVehiculesControlled()));
+                jsonFeed.put("nbOfImmobilisations", String.valueOf(feedback.getNbOfImmobilisations()));
+                jsonFeed.put("nbOfReports", String.valueOf(feedback.getNbOfReports()));
+                jsonFeed.put("nbOfPersonsListened", String.valueOf(feedback.getNbOfPersonsListened()));
+                jsonFeed.put("nbOfCustody", String.valueOf(feedback.getNbOfCustody()));
 
             }catch (Exception e){
                 e.printStackTrace();
             }
 
+            DialogHelper.dialogPop("Envoie du mail", "Patientez quelques instants", "Ok");
+            try {
+                Sender.getInstance().send(jsonFeed.toJSONString(), "REPORT");
+            } catch (GeneralSecurityException e) {
+                e.printStackTrace();
+            }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succès");
             alert.setHeaderText(null);

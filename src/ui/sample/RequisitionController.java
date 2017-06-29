@@ -1,10 +1,13 @@
 package ui.sample;
 
+import java.security.GeneralSecurityException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.ZoneId;
-
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import bl.model.Infraction;
 import bl.model.Requisition;
 import bl.model.Unit;
@@ -12,12 +15,14 @@ import com.google.gson.Gson;
 import facade.RequisitionFacade;
 import facade.UnitFacade;
 
+import helpers.DialogHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import lib.DateTimePicker;
 import org.json.simple.JSONObject;
+import outlook.Sender;
 import ui.Controller;
 import ui.View;
 
@@ -139,18 +144,33 @@ public class RequisitionController implements Initializable {
                 motivation = motivationText.getText();
 
 
+
                 LocalDateTime startDate = startingDate.getDateTimeValue();
 
-                Instant instantDeb = startDate.atZone(ZoneId.systemDefault()).toInstant();
-                dateDebut = Date.from(instantDeb);
-                df.format(dateDebut);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+                LocalDateTime dateTimeDeb = startDate;
+                String formattedDateTimeDeb = dateTimeDeb.format(formatter);
+
+                try {
+                     dateDebut = sdf.parse(formattedDateTimeDeb);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
 
 
                 LocalDateTime endDate = endingDate.getDateTimeValue();
 
-                Instant instantFin = endDate.atZone((ZoneId.systemDefault())).toInstant();
-                dateFin = Date.from(instantFin);
-                df.format(dateFin);
+                LocalDateTime dateTimeFin = endDate;
+                String formattedDateTimeFin = dateTimeFin.format(formatter);
+                try {
+                     dateFin = sdf.parse(formattedDateTimeFin);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
 
                 if(dateDebut.before(dateFin)){
                     requisition = new Requisition(dateDebut, dateFin, null, motivation, unite, null, infractions, null);
@@ -165,11 +185,12 @@ public class RequisitionController implements Initializable {
                     try{
                         jsonReq.put("articles", "");
                         jsonReq.put("requestingUnit", requisition.getRequestingUnit().getName());
-                        jsonReq.put("startDate", requisition.getStartDate());
-                        jsonReq.put("endDate", requisition.getEndDate());
+                        jsonReq.put("startDate",formattedDateTimeDeb);
+                        jsonReq.put("endDate", formattedDateTimeFin);
                         jsonReq.put("district", "");
                         jsonReq.put("motivation", requisition.getMotivation());
                         jsonReq.put("perimeter", "");
+                        jsonReq.put("targets", "[]");
 
                     }catch (Exception e){
                         e.printStackTrace();
@@ -183,7 +204,12 @@ public class RequisitionController implements Initializable {
                     String finalJSON = jsonTemp.substring(0,jsonTemp.length()-1) + ", \"targets\": "+ jsonInfractionString + "}";
                     finalJSON = finalJSON.replace("label", "infraction");
 
-
+                    DialogHelper.dialogPop("Envoi du mail", "Patientez quelques instants", "Ok");
+                    try {
+                        Sender.getInstance().send(jsonReq.toJSONString(), "REQUEST");
+                    } catch (GeneralSecurityException e) {
+                        e.printStackTrace();
+                    }
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Succès");
                     alert.setHeaderText(null);

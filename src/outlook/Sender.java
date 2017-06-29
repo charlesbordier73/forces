@@ -1,34 +1,32 @@
 package outlook;
 
 import bl.model.Feedback;
-import bl.model.Requisition;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.security.GeneralSecurityException;
-import java.util.Properties;
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
 
-public class AnswerSender {
+public class Sender {
 
-    public static AnswerSender instance;
+    public static Sender instance;
     final String host = "smtp-mail.outlook.com";// host address and protocol : here smtp
     final String user = "polytechpi@outlook.fr";// mail address
     final String password = "Polytech2017";// Password
 
     final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
 
-    private AnswerSender(){
+    private Sender(){
     }
 
-    public static AnswerSender getInstance(){
+    public static Sender getInstance(){
         if (instance == null){
-            instance = new AnswerSender();
+            instance = new Sender();
         }
         return instance;
     }
 
-    public void sendRequisitionAnswer(Requisition requisition) throws GeneralSecurityException {
+    public void send(String json, String type) throws GeneralSecurityException {
         // Get system properties
         /*
         Properties properties = new Properties();
@@ -81,13 +79,13 @@ public class AnswerSender {
             message.setFrom(new InternetAddress(user));
 
             // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(requisition.getRequestingUnit().getMail()));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("polytechpi@outlook.fr"));
 
             // Set Subject: header field
-            message.setSubject("REQUISITION APPROVED");
+            message.setSubject(type);
 
             // Now set the actual message
-            message.setText("{\"requisitionID\": \""+requisition.getId()+"\"}");
+            message.setText(json);
 
             // Send message
             Transport.send(message);
@@ -97,9 +95,6 @@ public class AnswerSender {
         }
     }
 
-    public void sendFeedbackAnswer(Feedback feedback){
-
-    }
 
     private class SMTPAuthenticator extends javax.mail.Authenticator
     {
